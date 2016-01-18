@@ -37,7 +37,7 @@ class logentries::repo {
       }
     }
     redhat: {
-      case $::lsbmajdistrelease {
+      case $::operatingsystemmajrelease {
         '6', '7': {
           class {'logentries::repo::yum':
             baseurl => "http://rep.logentries.com/centos6/${yum_architecture}",
