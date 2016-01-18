@@ -41,7 +41,7 @@ define logentries::agent::follow(
       fail 'can not specify both, token and destination'
     }
     
-    if $ != '' {
+    if $multi_line_start_pattern != '' {
       $entry_identifier = "entry_identifier = ${multi_line_start_pattern}\n"
     }
 
