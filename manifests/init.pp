@@ -3,6 +3,7 @@ class logentries (
   $account_key,
   $agent_key = '',
   $datahub = '',
+  $register = true,
   $use_server_config = false,
   $manage_repos = true
 ) {
@@ -19,6 +20,7 @@ class logentries (
     agent_key         => $agent_key,
     datahub           => $datahub,
     use_server_config => $use_server_config,
+    register          => $register, 
   }
   if $manage_repos {
     include logentries::repo

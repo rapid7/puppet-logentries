@@ -34,6 +34,16 @@ class logentries::agent {
       require => Package['logentries-daemon'],
       notify  => Service['logentries'],
     }
+  } elsif ( $logentries::params::agent_key == '' ) and ( $logentries::params::register == false ) {
+    # Basic configuration which only sends logs. Does not register host in UI. Useful with auto scaling. Has to be used with agent::follow and destination parameter.
+    file { '/etc/le/config':
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0640',
+      content => "[Main]\nuser-key = ${logentries::params::account_key}\npull-server-side-config = False\n",
+      require => Package['logentries-daemon'],
+      notify  => Service['logentries'],
+    }
   } else {
     exec { '/usr/bin/le register':
       command => "/usr/bin/le register ${use_server_config_arg}${datahub_config_arg} --account-key=${logentries::params::account_key}${agent_key_config_arg}",
