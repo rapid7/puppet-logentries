@@ -24,7 +24,8 @@ class logentries::repo {
         'karmic', 'lenny', 'lucid', 'maverick',
         'natty', 'oneiric', 'precise', 'quantal',
         'raring', 'saucy', 'squeeze', 'trusty',
-        'utopic', 'vivid', 'wheezy', 'jessie': {
+        'utopic', 'vivid', 'wheezy', 'jessie',
+        'xenial': {
           include logentries::repo::apt
         }
         default: {
