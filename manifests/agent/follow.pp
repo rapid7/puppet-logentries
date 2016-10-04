@@ -46,7 +46,7 @@ define logentries::agent::follow(
     }
 
     file { "${confd_path}.conf":
-      content => "# managed by puppet, module ${::module}\n[${clean_title}]\npath = ${my_path}\n${token_or_destination}\n${$entry_identifier}\n",
+      content => "# managed by puppet, module ${::module}\n[${clean_title}]\npath = ${my_path}\n${token_or_destination}\n${entry_identifier}\n",
       require => File['/etc/le/conf.d'],
       notify  => Service['logentries'],
     }
