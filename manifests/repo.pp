@@ -36,7 +36,7 @@ class logentries::repo {
       }
     }
     redhat: {
-      case $::lsbmajdistrelease {
+      case $::operatingsystemmajrelease {
         '6', '7': {
           class {'logentries::repo::yum':
             baseurl => "http://rep.logentries.com/centos6/${yum_architecture}",
@@ -46,6 +46,11 @@ class logentries::repo {
           class {'logentries::repo::yum':
             baseurl => "http://rep.logentries.com/centos5/${yum_architecture}",
           }
+        }
+        /201./:{ # Amazon Linux
+           class {'logentries::repo::yum':
+             baseurl => "http://rep.logentries.com/centos6/${yum_architecture}",
+           }
         }
         default: {
           fail "unknown compatibility for \
