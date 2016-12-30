@@ -47,6 +47,11 @@ class logentries::repo {
             baseurl => "http://rep.logentries.com/centos5/${yum_architecture}",
           }
         }
+        /201./:{ # Amazon Linux
+           class {'logentries::repo::yum':
+               baseurl => "http://rep.logentries.com/centos6/${yum_architecture}",
+           }
+        }
         default: {
           fail "unknown compatibility for \
           ${::operatingsystem}/${::lsbdistcodename}"
