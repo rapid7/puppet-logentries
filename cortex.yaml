@@ -1,0 +1,20 @@
+---
+info:
+  title: Puppet Logentries
+  description: Puppet support
+  x-cortex-git:
+    github:
+      alias: r7org
+      repository: rapid7/puppet-logentries
+  x-cortex-tag: puppet-logentries
+  x-cortex-type: service
+  x-cortex-groups:
+  - target:legacy-deploy
+  - strategy:cloud
+  - status:obsolete
+  - exposure:internal-ship
+  x-cortex-domain-parents:
+  - tag: logsearch
+openapi: 3.0.1
+servers:
+- url: "/"
